@@ -2,12 +2,12 @@ const container=document.querySelector('#container');
 const fileinput=document.querySelector('#file-input');
 
 async function loadTrainingData() {
-	const labels = ['Fukada Eimi', 'Rina Ishihara', 'Takizawa Laura', 'Yua Mikami']
+	const labels = ['Fukada Eimi', 'Rina Ishihara', 'Takizawa Laura', 'Yua Mikami', 'Xu Lu']
 
 	const faceDescriptors = []
 	for (const label of labels) {
 		const descriptors = []
-		for (let i = 1; i <= 4; i++) {
+		for (let i = 1; i <= 5; i++) {
 			const image = await faceapi.fetchImage(`/data/${label}/${i}.jpeg`)
 			const detection = await faceapi.detectSingleFace(image).withFaceLandmarks().withFaceDescriptor()
 			descriptors.push(detection.descriptor)
