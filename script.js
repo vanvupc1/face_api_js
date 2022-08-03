@@ -8,7 +8,7 @@ async function loadTrainingData() {
 	for (const label of labels) {
 		const descriptors = []
 		for (let i = 1; i <= 4; i++) {
-			const image = await faceapi.fetchImage(`/face_api_js/data/${label}/${i}.jpeg`)
+			const image = await faceapi.fetchImage(`/data/${label}/${i}.jpeg`)
 			const detection = await faceapi.detectSingleFace(image).withFaceLandmarks().withFaceDescriptor()
 			descriptors.push(detection.descriptor)
 		}
@@ -25,9 +25,9 @@ async function init(){
     
      
     await Promise.all([
-        faceapi.nets.ssdMobilenetv1.loadFromUri('/face_api_js/models'),
-        faceapi.nets.faceLandmark68Net.loadFromUri('/face_api_js/models'),
-        faceapi.nets.faceRecognitionNet.loadFromUri('/face_api_js/models')
+        faceapi.nets.ssdMobilenetv1.loadFromUri('/models'),
+        faceapi.nets.faceLandmark68Net.loadFromUri('/models'),
+        faceapi.nets.faceRecognitionNet.loadFromUri('/models')
     ])
     
     Toastify({
